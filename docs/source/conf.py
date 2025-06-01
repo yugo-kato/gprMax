@@ -5,6 +5,10 @@
 
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
+language = 'ja'
+#locale_dirs = ['locale/']   # path is example but recommended.
+locale_dirs = ['../locale'] 
+gettext_compact = False     # optional.
 
 import re
 import time
