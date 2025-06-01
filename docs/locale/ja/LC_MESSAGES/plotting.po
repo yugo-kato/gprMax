@@ -1,0 +1,423 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2025, The University of Edinburgh, United Kingdom.
+# Authors: Craig Warren and Antonis Giannopoulos
+# This file is distributed under the same license as the gprMax package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: gprMax 3.1.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-18 22:01+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja\n"
+"Language-Team: ja <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../source/plotting.rst:6
+msgid "Plotting"
+msgstr "プロット"
+
+#: ../source/plotting.rst:9
+msgid "A-scans"
+msgstr "Aスキャン"
+
+#: ../source/plotting.rst:12
+msgid "plot_Ascan.py"
+msgstr ""
+
+#: ../source/plotting.rst:14
+msgid ""
+"This module uses matplotlib to plot the time history for the electric and"
+" magnetic field components, and currents for all receivers in a model "
+"(each receiver gets a separate figure window). Usage (from the top-level "
+"gprMax directory) is:"
+msgstr ""
+
+#: ../source/plotting.rst:20 ../source/plotting.rst:63
+msgid "where ``outputfile`` is the name of output file including the path."
+msgstr ""
+
+#: ../source/plotting.rst:22 ../source/plotting.rst:65
+msgid "There are optional command line arguments:"
+msgstr ""
+
+#: ../source/plotting.rst:24
+msgid ""
+"``--outputs`` to specify a subset of the default output components "
+"(``Ex``, ``Ey``, ``Ez``, ``Hx``, ``Hy``, ``Hz``, ``Ix``, ``Iy`` or "
+"``Iz``) to plot. By default all electric and magnetic field components "
+"are plotted."
+msgstr ""
+
+#: ../source/plotting.rst:25
+msgid ""
+"``-fft`` to plot the Fast Fourier Transform (FFT) of a single output "
+"component"
+msgstr ""
+
+#: ../source/plotting.rst:27
+msgid "For example to plot the ``Ez`` output component with it's FFT:"
+msgstr ""
+
+#: ../source/plotting.rst:34
+msgid "B-scans"
+msgstr "Bスキャン"
+
+#: ../source/plotting.rst:37
+msgid "plot_Bscan.py"
+msgstr ""
+
+#: ../source/plotting.rst:39
+msgid ""
+"gprMax produces a separate output file for each trace (A-scan) in the "
+"B-scan. These must be combined into a single file using the "
+"``outputfiles_merge.py`` module (described in the :ref:`other utilities "
+"section <utils>`). This module uses matplotlib to plot an image of the "
+"B-scan. Usage (from the top-level gprMax directory) is:"
+msgstr ""
+
+#: ../source/plotting.rst:45 ../source/plotting.rst:95
+msgid "where:"
+msgstr ""
+
+#: ../source/plotting.rst:47
+msgid "``outputfile`` is the name of output file including the path"
+msgstr ""
+
+#: ../source/plotting.rst:48
+msgid ""
+"``rx-component`` is the name of the receiver output component (``Ex``, "
+"``Ey``, ``Ez``, ``Hx``, ``Hy``, ``Hz``, ``Ix``, ``Iy`` or ``Iz``) to plot"
+msgstr ""
+
+#: ../source/plotting.rst:52
+msgid "Antenna parameters"
+msgstr "アンテナパラメータ"
+
+#: ../source/plotting.rst:55
+msgid "plot_antenna_params.py"
+msgstr ""
+
+#: ../source/plotting.rst:57
+msgid ""
+"This module uses matplotlib to plot the input impedance (resistance and "
+"reactance) and s11 parameter from an antenna model fed using a "
+"transmission line. It also plots the time history of the incident and "
+"reflected voltages in the transmission line and their frequency spectra. "
+"The module can optionally plot the s21 parameter if another transmission "
+"line or a receiver output (``#rx``) is used on the receiver antenna. "
+"Usage (from the top-level gprMax directory) is:"
+msgstr ""
+
+#: ../source/plotting.rst:67
+msgid ""
+"``--tltx-num`` is the number of the transmission line (default is one) "
+"for the transmitter antenna. Transmission lines are numbered (starting at"
+" one) in the order they appear in the input file."
+msgstr ""
+
+#: ../source/plotting.rst:68
+msgid ""
+"``--tlrx-num`` is the number of the transmission line (default is None) "
+"for the receiver antenna (for a s21 parameter). Transmission lines are "
+"numbered (starting at one) in the order they appear in the input file."
+msgstr ""
+
+#: ../source/plotting.rst:69
+msgid ""
+"``--rx-num`` is the number of the receiver output (default is None) for "
+"the receiver antenna (for a s21 parameter). Receivers are numbered "
+"(starting at one) in the order they appear in the input file."
+msgstr ""
+
+#: ../source/plotting.rst:70
+msgid ""
+"``--rx-component`` is the electric field component (``Ex``, ``Ey`` or "
+"``Ez``) of the receiver output for the receiver antenna (for a s21 "
+"parameter)."
+msgstr ""
+
+#: ../source/plotting.rst:72
+msgid ""
+"For example to plot the input impedance, s11 and s21 parameters from a "
+"simulation with transmitter and receiver antennas that are attached to "
+"transmission lines (the transmission line feeding the transmitter appears"
+" first in the input file, and the transmission line attached to the "
+"receiver antenna appears after it)."
+msgstr ""
+
+#: ../source/plotting.rst:82
+msgid "Built-in waveforms"
+msgstr "組み込みの波形"
+
+#: ../source/plotting.rst:84
+msgid ""
+"This section describes the definitions of the functions that are used to "
+"create the built-in waveforms, and how to plot them."
+msgstr ""
+
+#: ../source/plotting.rst:87
+msgid "plot_source_wave.py"
+msgstr ""
+
+#: ../source/plotting.rst:89
+msgid ""
+"This module uses matplotlib to plot one of the built-in waveforms and "
+"it's FFT. Usage (from the top-level gprMax directory) is:"
+msgstr ""
+
+#: ../source/plotting.rst:97
+msgid "``type`` is the type of waveform, e.g. gaussian, ricker etc..."
+msgstr ""
+
+#: ../source/plotting.rst:98
+msgid "``amp`` is the amplitude of the waveform"
+msgstr ""
+
+#: ../source/plotting.rst:99
+msgid ""
+"``freq`` is the centre frequency of the waveform (Hertz). In the case of "
+"the Gaussian waveform it is related to the pulse width."
+msgstr ""
+
+#: ../source/plotting.rst:100
+msgid ""
+"``timewindow`` is the time window (seconds) to view the waveform, i.e. "
+"the time window of the proposed simulation"
+msgstr ""
+
+#: ../source/plotting.rst:101
+msgid ""
+"``dt`` is the time step (seconds) to view waveform, i.e. the time step of"
+" the proposed simulation"
+msgstr ""
+
+#: ../source/plotting.rst:103
+msgid "There is an optional command line argument:"
+msgstr ""
+
+#: ../source/plotting.rst:105
+msgid "``-fft`` to plot the Fast Fourier Transform (FFT) of the waveform"
+msgstr ""
+
+#: ../source/plotting.rst:108
+msgid "Definitions"
+msgstr "定義"
+
+#: ../source/plotting.rst:110
+msgid ""
+"Definitions of the built-in waveforms and example plots are shown using "
+"the parameters: amplitude of one, centre frequency of 1GHz, time window "
+"of 6ns, and a time step of 1.926ps."
+msgstr ""
+
+#: ../source/plotting.rst:113
+msgid "gaussian"
+msgstr ""
+
+#: ../source/plotting.rst:115
+msgid "A Gaussian waveform."
+msgstr ""
+
+#: ../source/plotting.rst:117
+#, python-brace-format
+msgid ""
+"W(t) = e^{-\\zeta(t-\\chi)^2}\n"
+"\n"
+msgstr ""
+
+#: ../source/plotting.rst:119 ../source/plotting.rst:133
+#: ../source/plotting.rst:147
+#, python-brace-format
+msgid ""
+"where :math:`\\zeta = 2\\pi^2f^2`, :math:`\\chi=\\frac{1}{f}` and "
+":math:`f` is the frequency."
+msgstr ""
+
+#: ../source/plotting.rst:123
+msgid "Example of the ``gaussian`` waveform - time domain and power spectrum."
+msgstr ""
+
+#: ../source/plotting.rst:127
+msgid "gaussiandot"
+msgstr ""
+
+#: ../source/plotting.rst:129
+msgid "First derivative of a Gaussian waveform."
+msgstr ""
+
+#: ../source/plotting.rst:131
+#, python-brace-format
+msgid ""
+"W(t) = -2 \\zeta (t-\\chi) e^{-\\zeta(t-\\chi)^2}\n"
+"\n"
+msgstr ""
+
+#: ../source/plotting.rst:137
+msgid "Example of the ``gaussiandot`` waveform - time domain and power spectrum."
+msgstr ""
+
+#: ../source/plotting.rst:141
+msgid "gaussiandotnorm"
+msgstr ""
+
+#: ../source/plotting.rst:143
+msgid "Normalised first derivative of a Gaussian waveform."
+msgstr ""
+
+#: ../source/plotting.rst:145
+msgid ""
+"W(t) = -2 \\sqrt{\\frac{e}{2\\zeta}} \\zeta (t-\\chi) "
+"e^{-\\zeta(t-\\chi)^2}\n"
+"\n"
+msgstr ""
+
+#: ../source/plotting.rst:151
+msgid ""
+"Example of the ``gaussiandotnorm`` waveform - time domain and power "
+"spectrum."
+msgstr ""
+
+#: ../source/plotting.rst:155
+msgid "gaussiandotdot"
+msgstr ""
+
+#: ../source/plotting.rst:157
+msgid "Second derivative of a Gaussian waveform."
+msgstr ""
+
+#: ../source/plotting.rst:159
+#, python-brace-format
+msgid ""
+"W(t) = 2\\zeta \\left(2\\zeta(t-\\chi)^2 - 1 \\right) "
+"e^{-\\zeta(t-\\chi)^2}\n"
+"\n"
+msgstr ""
+
+#: ../source/plotting.rst:161 ../source/plotting.rst:175
+#: ../source/plotting.rst:189
+msgid ""
+"where :math:`\\zeta = \\pi^2f^2`, :math:`\\chi=\\frac{\\sqrt{2}}{f}` and "
+":math:`f` is the frequency."
+msgstr ""
+
+#: ../source/plotting.rst:165
+msgid ""
+"Example of the ``gaussiandotdot`` waveform - time domain and power "
+"spectrum."
+msgstr ""
+
+#: ../source/plotting.rst:169
+msgid "gaussiandotdotnorm"
+msgstr ""
+
+#: ../source/plotting.rst:171
+msgid "Normalised second derivative of a Gaussian waveform."
+msgstr ""
+
+#: ../source/plotting.rst:173
+#, python-brace-format
+msgid ""
+"W(t) = \\left( 2\\zeta (t-\\chi)^2 - 1 \\right) e^{-\\zeta(t-\\chi)^2}\n"
+"\n"
+msgstr ""
+
+#: ../source/plotting.rst:179
+msgid ""
+"Example of the ``gaussiandotdotnorm`` waveform - time domain and power "
+"spectrum."
+msgstr ""
+
+#: ../source/plotting.rst:183
+msgid "ricker"
+msgstr ""
+
+#: ../source/plotting.rst:185
+msgid ""
+"A Ricker (or Mexican Hat) waveform which is the negative, normalised "
+"second derivative of a Gaussian waveform."
+msgstr ""
+
+#: ../source/plotting.rst:187
+#, python-brace-format
+msgid ""
+"W(t) = - \\left( 2\\zeta (t-\\chi)^2 -1 \\right) e^{-\\zeta(t-\\chi)^2}\n"
+"\n"
+msgstr ""
+
+#: ../source/plotting.rst:193
+msgid "Example of the ``ricker`` waveform - time domain and power spectrum."
+msgstr ""
+
+#: ../source/plotting.rst:197
+msgid "sine"
+msgstr ""
+
+#: ../source/plotting.rst:199
+msgid "A single cycle of a sine waveform."
+msgstr ""
+
+#: ../source/plotting.rst:201 ../source/plotting.rst:225
+msgid ""
+"W(t) = R\\sin(2\\pi ft)\n"
+"\n"
+msgstr ""
+
+#: ../source/plotting.rst:203 ../source/plotting.rst:227
+msgid "and"
+msgstr ""
+
+#: ../source/plotting.rst:205
+#, python-brace-format
+msgid ""
+"R =\n"
+"\\begin{cases}\n"
+"1 &\\text{if $ft\\leq1$}, \\\\\n"
+"0 &\\text{if $ft>1$}.\n"
+"\\end{cases}"
+msgstr ""
+
+#: ../source/plotting.rst:213
+msgid ":math:`f` is the frequency"
+msgstr ""
+
+#: ../source/plotting.rst:217
+msgid "Example of the ``sine`` waveform - time domain and power spectrum."
+msgstr ""
+
+#: ../source/plotting.rst:221
+msgid "contsine"
+msgstr ""
+
+#: ../source/plotting.rst:223
+msgid ""
+"A continuous sine waveform. In order to avoid introducing noise into the "
+"calculation the amplitude of the waveform is modulated for the first "
+"cycle of the sine wave (ramp excitation)."
+msgstr ""
+
+#: ../source/plotting.rst:229
+#, python-brace-format
+msgid ""
+"R =\n"
+"\\begin{cases}\n"
+"R_cft &\\text{if $R\\leq 1$}, \\\\\n"
+"1 &\\text{if $R>1$}.\n"
+"\\end{cases}"
+msgstr ""
+
+#: ../source/plotting.rst:237
+msgid "where :math:`R_c` is set to :math:`0.25` and :math:`f` is the frequency."
+msgstr ""
+
+#: ../source/plotting.rst:241
+msgid "Example of the ``contsine`` waveform - time domain and power spectrum."
+msgstr ""
+

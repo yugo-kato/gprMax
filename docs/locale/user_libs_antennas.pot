@@ -1,0 +1,175 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2025, The University of Edinburgh, United Kingdom. Authors: Craig Warren and Antonis Giannopoulos
+# This file is distributed under the same license as the gprMax package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: gprMax 3.1.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-18 22:01+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../source/user_libs_antennas.rst:1
+msgid "User libraries is a sub-package where useful Python modules contributed by users are stored."
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:5
+msgid "GPR antenna models"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:8
+msgid "Information"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:10
+msgid "The module features models of antennas similar to commercial GPR antennas. The following antenna models are included:"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:13
+msgid "Manufacturer/Model"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:13
+msgid "Dimensions"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:13
+msgid "Resolution(s)"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:13
+msgid "Author/Contact"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:13
+msgid "Attribution/Cite"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:15
+msgid "GSSI 1.5GHz (Model 5100)"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:15
+msgid "170x108x45mm"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:15
+#: ../source/user_libs_antennas.rst:16
+msgid "1, 2mm"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:15
+#: ../source/user_libs_antennas.rst:16
+msgid "Craig Warren (craig.warren@northumbria.ac.uk), Northumbria University, UK"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:15
+msgid "1,2"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:16
+msgid "MALA 1.2GHz"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:16
+msgid "184x109x46mm"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:16
+msgid "1"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:17
+msgid "GSSI 400MHz"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:17
+msgid "300x300x170mm"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:17
+msgid "0.5, 1, 2mm"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:17
+msgid "Sam Stadler (Sam.Stadler@liag-hannover.de), `Leibniz Institute for Applied Geophysics <https://www.leibniz-liag.de/en/research/methods/electromagnetic-methods/ground-penetrating-radar/guided-gpr-waves.html>`_, Germany"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:17
+msgid "3"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:20
+msgid "**License**: `Creative Commons Attribution-ShareAlike 4.0 International License <http://creativecommons.org/licenses/by-sa/4.0/>`_"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:22
+msgid "**Attributions/citations**:"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:24
+msgid "Warren, C., Giannopoulos, A. (2011). Creating finite-difference time-domain models of commercial ground-penetrating radar antennas using Taguchi's optimization method. *Geophysics*, 76(2), G37-G47. (http://dx.doi.org/10.1190/1.3548506)"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:25
+msgid "Giannakis, I., Giannopoulos, A., & Warren, C. (2019). Realistic FDTD GPR antenna models optimised using a novel linear/non-linear Full Waveform Inversion. *IEEE Transactions on Geoscience and Remote Sensing*, 57(3), 1768-1778. (https://doi.org/10.1109/TGRS.2018.2869027)"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:26
+msgid "Stadler. S., Igel J. (2018). A Numerical Study on Using Guided GPR Waves Along Metallic Cylinders in Boreholes for Permittivity Sounding. 17th International Conference on GPR. (https://tinyurl.com/y6vdab22)"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:29
+msgid "Module overview"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:31
+msgid "``GSSI.py`` is a module containing models of antennas similar to those manufactured by `Geophysical Survey Systems, Inc. (GSSI) <http://www.geophysical.com>`_."
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:32
+msgid "``MALA.py`` is a module containing models of antennas similar to those manufactured by `MALA Geoscience <http://www.malags.com/>`_."
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:34
+msgid "Descriptions of how the models were created can be found in the aforementioned attributions."
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:37
+msgid "How to use the module"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:39
+msgid "The antenna models can be accessed from within a block of Python code in an input file. The models are inserted at location x,y,z. The coordinates are relative to the geometric centre of the antenna in the x-y plane and the bottom of the antenna skid in the z direction. The models must be used with cubic spatial resolutions of either 0.5mm (GSSI 400MHz antenna only), 1mm (default), or 2mm by setting the keyword argument, e.g. ``resolution=0.002``. The antenna models can be rotated 90 degrees counter-clockwise (CCW) in the x-y plane by setting the keyword argument ``rotate90=True``."
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:43
+msgid "If you are moving an antenna model within a simulation, e.g. to generate a B-scan, you should ensure that the step size you choose is a multiple of the spatial resolution of the simulation. Otherwise when the position of antenna is converted to cell coordinates the geometry maybe altered."
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:46
+msgid "Example"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:48
+msgid "To include an antenna model similar to a GSSI 1.5 GHz antenna at a location 0.125m, 0.094m, 0.100m (x,y,z) using a 2mm cubic spatial resolution:"
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:60
+msgid "FDTD geometry mesh showing an antenna model similar to a GSSI 1.5 GHz antenna (skid removed for illustrative purposes)."
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:65
+msgid "FDTD geometry mesh showing an antenna model similar to a GSSI 400 MHz antenna (skid removed for illustrative purposes)."
+msgstr ""
+
+#: ../source/user_libs_antennas.rst:70
+msgid "FDTD geometry mesh showing an antenna model similar to a MALA 1.2GHz antenna (skid removed for illustrative purposes)."
+msgstr ""
