@@ -1,0 +1,329 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introductory (2D) models &mdash; gprMax  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2aa0fae8"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="_static/translations.js?v=4dbe4bdc"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="Antenna models" href="examples_antennas.html" />
+    <link rel="prev" title="Optimisation - Taguchi&#39;s method" href="user_libs_opt_taguchi.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            gprMax
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">はじめに</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="include_readme.html">始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">ソフトウェアの機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gprmodelling.html">地中レーダモデリングのガイダンス</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">gprMaxの使用法</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="input.html">入力ファイルのコマンド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">出力データ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Pythonツール</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">プロット</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">File utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">高度な話題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_scripting.html">Scripting the input file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openmp_mpi.html">OpenMP, MPI, and HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPGPU</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ユーザライブラリ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_antennas.html">GPR antenna models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_antenna_patterns.html">Antenna patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_austinman.html">AustinMan/AustinWoman</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_materials.html">Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_opt_taguchi.html">Optimisation - Taguchi's method</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">例</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introductory (2D) models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#a-scan-from-a-metal-cylinder">A-scan from a metal cylinder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#determine-the-constitutive-parameters-for-the-materials">Determine the constitutive parameters for the materials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#determine-the-source-type-and-excitation-frequency">Determine the source type and excitation frequency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#calculate-a-spatial-resolution-and-domain-size">Calculate a spatial resolution and domain size</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#choose-a-time-window">Choose a time window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#create-the-objects">Create the objects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-the-model">Run the model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#view-the-results">View the results</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#b-scan-from-a-metal-cylinder">B-scan from a metal cylinder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#results">Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples_antennas.html">Antenna models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_advanced.html">高度な機能</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ヘルプとサポート</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faqs.html">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="screencasts.html">Screencasts &amp; videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding.html">コードの概要</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">精度と性能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comparisons_analytical.html">Analytical comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comparisons_numerical.html">Numerical comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">パフォーマンスベンチマーク</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">付録</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="references.html">参考文献</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gprMax</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introductory (2D) models</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/examples_simple_2D.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introductory-2d-models">
+<h1>Introductory (2D) models<a class="headerlink" href="#introductory-2d-models" title="この見出しへのパーマリンク"></a></h1>
+<p>This section provides some introductory example models in 2D that demonstrate basic features of gprMax. Each example comes with an input file which you can download and run.</p>
+<section id="a-scan-from-a-metal-cylinder">
+<span id="example-2d-ascan"></span><h2>A-scan from a metal cylinder<a class="headerlink" href="#a-scan-from-a-metal-cylinder" title="この見出しへのパーマリンク"></a></h2>
+<p><a class="reference download internal" download="" href="_downloads/c639c409c8c04a907d32651485b9da4a/cylinder_Ascan_2D.in"><code class="xref download docutils literal notranslate"><span class="pre">cylinder_Ascan_2D.in</span></code></a></p>
+<p>This example is the GPR modelling equivalent of 'Hello World'! It demonstrates how to simulate a single trace (A-scan) from a metal cylinder buried in a dielectric half-space.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>#title: A-scan from a metal cylinder buried in a dielectric half-space
+<span class="linenos"> 2</span>#domain: 0.240 0.210 0.002
+<span class="linenos"> 3</span>#dx_dy_dz: 0.002 0.002 0.002
+<span class="linenos"> 4</span>#time_window: 3e-9
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>#material: 6 0 1 0 half_space
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>#waveform: ricker 1 1.5e9 my_ricker
+<span class="linenos"> 9</span>#hertzian_dipole: z 0.100 0.170 0 my_ricker
+<span class="linenos">10</span>#rx: 0.140 0.170 0
+<span class="linenos">11</span>
+<span class="linenos">12</span>#box: 0 0 0 0.240 0.170 0.002 half_space
+<span class="linenos">13</span>#cylinder: 0.120 0.080 0 0.120 0.080 0.002 0.010 pec
+<span class="linenos">14</span>
+<span class="linenos">15</span>#geometry_view: 0 0 0 0.240 0.210 0.002 0.002 0.002 0.002 cylinder_half_space n
+</pre></div>
+</div>
+<p>The geometry of the scenario is straightforward and an image created from the geometry view is shown in <a class="reference internal" href="#cylinder-half-space-geo"><span class="std std-numref">図 33</span></a>. The transparent area around the boundary of the domain represents the <a class="reference internal" href="gprmodelling.html#pml"><span class="std std-ref">PML region</span></a>. The red cell is the source and the blue cell is the receiver.</p>
+<figure class="align-default" id="id1">
+<span id="cylinder-half-space-geo"></span><a class="reference internal image-reference" href="_images/cylinder_half_space_geo.png"><img alt="_images/cylinder_half_space_geo.png" src="_images/cylinder_half_space_geo.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">図 33 </span><span class="caption-text">Geometry of a 2D model of a metal cylinder buried in a dielectric half-space.</span><a class="headerlink" href="#id1" title="この画像へのパーマリンク"></a></p>
+</figcaption>
+</figure>
+<p>For this initial example a detailed description of what each command in the input file does and why each command was used is given. The following steps explain the process of building the input file:</p>
+<section id="determine-the-constitutive-parameters-for-the-materials">
+<h3>Determine the constitutive parameters for the materials<a class="headerlink" href="#determine-the-constitutive-parameters-for-the-materials" title="この見出しへのパーマリンク"></a></h3>
+<p>There will be three different materials in the model representing air, the dielectric half-space, and the metal cylinder. Air (free space) already exists as a built-in material in gprMax which can be accessed using the <code class="docutils literal notranslate"><span class="pre">free_space</span></code> identifier. The metal cylinder will be modelled as a Perfect Electric Conductor, which again exists as a built-in material in gprMax and can be accessed using the <code class="docutils literal notranslate"><span class="pre">pec</span></code> identifier. So the only material which has to be defined is for the dielectric half-space. It is a non-magnetic material, i.e. <span class="math notranslate nohighlight">\(\mu_r=1\)</span> and <span class="math notranslate nohighlight">\(\sigma_*=0\)</span> and with a relative permittivity of six, <span class="math notranslate nohighlight">\(\epsilon_r=6\)</span>, and zero conductivity, <span class="math notranslate nohighlight">\(\sigma=0\)</span>. The identifier <code class="docutils literal notranslate"><span class="pre">half_space</span></code> will be used.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#material: 6 0 1 0 half_space
+</pre></div>
+</div>
+</section>
+<section id="determine-the-source-type-and-excitation-frequency">
+<h3>Determine the source type and excitation frequency<a class="headerlink" href="#determine-the-source-type-and-excitation-frequency" title="この見出しへのパーマリンク"></a></h3>
+<p>These should generally be known, often based on the GPR system or scenario being modelled. Low frequencies are used where significant penetration depth is important, whereas high frequencies are used where less penetration and better resolution are required. In this case a theoretical Hertzian dipole source fed with a Ricker waveform with a centre frequency of <span class="math notranslate nohighlight">\(f_c=1.5~\textrm{GHz}\)</span> will be used to simulate the GPR antenna (see the <a class="reference internal" href="examples_antennas.html#example-bowtie"><span class="std std-ref">bowtie antenna example model</span></a> for how to include a model of the actual GPR antenna in the simulation).</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#waveform: ricker 1 1.5e9 my_ricker
+#hertzian_dipole: z 0.100 0.170 0 my_ricker
+</pre></div>
+</div>
+<p>The Ricker waveform is created with the <code class="docutils literal notranslate"><span class="pre">#waveform</span></code> command, specifying an amplitude of one, centre frequency of 1.5 GHz and picking an arbitrary identifier of <code class="docutils literal notranslate"><span class="pre">my_ricker</span></code>. The Hertzian dipole source is created using the <code class="docutils literal notranslate"><span class="pre">#hertzian_dipole</span></code> command, specifying a z direction polarisation (perpendicular to the survey direction if a B-scan were being created), location on the surface of the slab, and using the Ricker waveform already created.</p>
+</section>
+<section id="calculate-a-spatial-resolution-and-domain-size">
+<h3>Calculate a spatial resolution and domain size<a class="headerlink" href="#calculate-a-spatial-resolution-and-domain-size" title="この見出しへのパーマリンク"></a></h3>
+<p>In the <a class="reference internal" href="gprmodelling.html#guidance"><span class="std std-ref">地中レーダモデリングのガイダンス</span></a> section it was stated that a good <em>rule-of-thumb</em> was that the spatial resolution should be one tenth of the smallest wavelength present in the model. To determine the smallest wavelength, the highest frequency and lowest velocity present in the model are required. The highest frequency is not the centre frequency of the Ricker waveform! <a class="reference internal" href="plotting.html#waveforms"><span class="std std-ref">By examining the spectrum of a Ricker waveform</span></a> it is evident much higher frequencies are present, i.e. at a level -40dB from the centre frequency, frequencies 2-3 times as high are present. In this case the highest significant frequency present in the model is likely to be around 4 GHz. The wavelength at 4 GHz in the half-space (which has the lowest velocity) would be:</p>
+<div class="math notranslate nohighlight">
+\[\lambda = \frac{c}{f \sqrt{\epsilon_r}} = \frac{299792458}{4\times 10^9 \sqrt{6}} \approx 31~\textrm{mm}\]</div>
+<p>This would give a minimum spatial resolution of 3 mm. However, the diameter of the cylinder is 20 mm so would be resolved to 7 cells. Therefore a better choice would be 2 mm which resolves the diameter of the rebar to 10 cells.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#dx_dy_dz: 0.002 0.002 0.002
+</pre></div>
+</div>
+<p>The domain size should be enough to enclose the volume of interest, plus allow 10 cells (if using the default value) for the PML absorbing boundary conditions and approximately another 10 cells of between the PML and any objects of interest. In this case the plan is to take a B-scan of the scenario (in the next example) so the domain should be large enough to do that. Although this is a 2D model one cell must be specified in the infinite direction (in this case the z direction) of the domain.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#domain: 0.240 0.210 0.002
+</pre></div>
+</div>
+</section>
+<section id="choose-a-time-window">
+<h3>Choose a time window<a class="headerlink" href="#choose-a-time-window" title="この見出しへのパーマリンク"></a></h3>
+<p>It is desired to see the reflection from the cylinder, therefore the time window must be long enough to allow the electromagnetic waves to propagate from the source through the half-space to the cylinder and be reflected back to the receiver, i.e.</p>
+<div class="math notranslate nohighlight">
+\[t = \frac{0.180}{\frac{c}{\sqrt{6}}} \approx 1.5~\textrm{ns}\]</div>
+<p>This is the minimum time required, but the source waveform has a width of 1.2 ns, to allow for the entire source waveform to be reflected back to the receiver an initial time window of 3 ns will be tested.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#time_window: 3e-9
+</pre></div>
+</div>
+<p>The time step required for the model is automatically calculated using the <a class="reference internal" href="gprmodelling.html#guidance"><span class="std std-ref">CFL condition in 2D</span></a>.</p>
+</section>
+<section id="create-the-objects">
+<h3>Create the objects<a class="headerlink" href="#create-the-objects" title="この見出しへのパーマリンク"></a></h3>
+<p>Now physical objects can be created for the half-space and the cylinder. First the <code class="docutils literal notranslate"><span class="pre">#box</span></code> command will be used to create the half-space and then the <code class="docutils literal notranslate"><span class="pre">#cylinder</span></code> command will be given which will overwrite the properties of the half-space with those of the cylinder at the location of the cylinder.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#box: 0 0 0 0.240 0.170 0.002 half_space
+#cylinder: 0.120 0.080 0 0.120 0.080 0.002 0.010 pec
+</pre></div>
+</div>
+</section>
+<section id="run-the-model">
+<h3>Run the model<a class="headerlink" href="#run-the-model" title="この見出しへのパーマリンク"></a></h3>
+<p>You can now run the model:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m gprMax user_models/cylinder_Ascan_2D.in
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p>You can use the <code class="docutils literal notranslate"><span class="pre">--geometry-only</span></code> command line argument to build a model and produce any geometry views but not run the simulation. This option is useful for checking the geometry of the model is correct.</p></li>
+</ul>
+</div>
+</section>
+<section id="view-the-results">
+<h3>View the results<a class="headerlink" href="#view-the-results" title="この見出しへのパーマリンク"></a></h3>
+<p>You should have produced an output file <code class="docutils literal notranslate"><span class="pre">cylinder_Ascan_2D.out</span></code>. You can view the results (see <a class="reference internal" href="output.html#output"><span class="std std-ref">出力データ</span></a> section) using the command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m tools.plot_Ascan user_models/cylinder_Ascan_2D.out
+</pre></div>
+</div>
+<p><a class="reference internal" href="#cylinder-ascan-results"><span class="std std-numref">図 34</span></a> shows the time history of the electric and magnetic field components and currents at the receiver location. The <span class="math notranslate nohighlight">\(E_z\)</span> field component can be converted to voltage which represents the A-scan (trace). The initial part of the signal (~0.5-1.5 ns) represents the direct wave from transmitter to receiver. Then comes the reflected wavelet (~1.8-2.6 ns), which has opposite polarity, from the metal cylinder.</p>
+<figure class="align-default" id="id2">
+<span id="cylinder-ascan-results"></span><a class="reference internal image-reference" href="_images/cylinder_Ascan_results.png"><img alt="_images/cylinder_Ascan_results.png" src="_images/cylinder_Ascan_results.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">図 34 </span><span class="caption-text">Electric and magnetic field component time histories from the receiver in the model of a metal cylinder buried in a dielectric half-space.</span><a class="headerlink" href="#id2" title="この画像へのパーマリンク"></a></p>
+</figcaption>
+</figure>
+<p>Check out a <a class="reference external" href="https://youtu.be/BpBo0-SFda4">video of the field propagation in this example</a>. More videos are screencasts can be found in the <a class="reference internal" href="screencasts.html#screencasts"><span class="std std-ref">screencasts section</span></a>.</p>
+</section>
+</section>
+<section id="b-scan-from-a-metal-cylinder">
+<h2>B-scan from a metal cylinder<a class="headerlink" href="#b-scan-from-a-metal-cylinder" title="この見出しへのパーマリンク"></a></h2>
+<p><a class="reference download internal" download="" href="_downloads/33477454e24f972882ba08fb3ec968b5/cylinder_Bscan_2D.in"><code class="xref download docutils literal notranslate"><span class="pre">cylinder_Bscan_2D.in</span></code></a></p>
+<p>This example uses the same geometry as the previous example but this time a B-scan is created. A B-scan is composed of multiple traces (A-scans) recorded as the source and receiver are moved over the target, in this case the metal cylinder.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>#title: B-scan from a metal cylinder buried in a dielectric half-space
+<span class="linenos"> 2</span>#domain: 0.240 0.210 0.002
+<span class="linenos"> 3</span>#dx_dy_dz: 0.002 0.002 0.002
+<span class="linenos"> 4</span>#time_window: 3e-9
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span>#material: 6 0 1 0 half_space
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>#waveform: ricker 1 1.5e9 my_ricker
+<span class="linenos"> 9</span>#hertzian_dipole: z 0.040 0.170 0 my_ricker
+<span class="linenos">10</span>#rx: 0.080 0.170 0
+<span class="linenos">11</span>#src_steps: 0.002 0 0
+<span class="linenos">12</span>#rx_steps: 0.002 0 0
+<span class="linenos">13</span>
+<span class="linenos">14</span>#box: 0 0 0 0.240 0.170 0.002 half_space
+<span class="linenos">15</span>#cylinder: 0.120 0.080 0 0.120 0.080 0.002 0.010 pec
+</pre></div>
+</div>
+<p>The differences between this input file and the one from the A-scan are the x coordinates of the source and receiver (lines 11 and 12), and the commands needed to move the source and receiver (lines 13 and 14). As before, the source and receiver are offset by 40mm from each other as before but they are now shifted to a starting position for the scan. The <code class="docutils literal notranslate"><span class="pre">#src_steps</span></code> command is used to move every source in the model by specified steps each time the model is run. Similarly, the <code class="docutils literal notranslate"><span class="pre">#rx_steps</span></code> command is used to move every receiver in the model by specified steps each time the model is run. Note, the same functionality can be achieved by using a block of Python code in the input file to move the source and receiver individually (for further details see the <a class="reference internal" href="input.html#python"><span class="std std-ref">Python section</span></a>).</p>
+<p>To run the model to create a B-scan you must pass an optional argument to specify the number of times the model should be run. In this case this is the number of A-scans (traces) that will comprise the B-scan. For a B-scan over a distance of 120mm with a step of 2mm that is 60 A-scans.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m gprMax user_models/cylinder_Bscan_2D.in -n 60
+</pre></div>
+</div>
+<section id="results">
+<h3>Results<a class="headerlink" href="#results" title="この見出しへのパーマリンク"></a></h3>
+<p>You should have produced 60 output files, one for each A-scan, with names <code class="docutils literal notranslate"><span class="pre">cylinder_Bscan_2D1.out</span></code>, <code class="docutils literal notranslate"><span class="pre">cylinder_Bscan_2D2.out</span></code> etc... These can be combined into a single file using the command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m tools.outputfiles_merge user_models/cylinder_Bscan_2D
+</pre></div>
+</div>
+<p>You should see a combined output file <code class="docutils literal notranslate"><span class="pre">cylinder_Bscan_2D_merged.out</span></code>. You can add the optional argument <code class="docutils literal notranslate"><span class="pre">--remove-files</span></code> if you want to automatically delete the original single A-scan output files.</p>
+<p>You can now view an image of the B-scan using the command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m tools.plot_Bscan user_models/cylinder_Bscan_2D_merged.out Ez
+</pre></div>
+</div>
+<p><a class="reference internal" href="#cylinder-bscan-results"><span class="std std-numref">図 35</span></a> shows the B-scan (of the <span class="math notranslate nohighlight">\(E_z\)</span> field component). Again, the initial part of the signal (~0.5-1.5 ns) represents the direct wave from transmitter to receiver. Then comes the refelected wave (~2-3 ns) from the metal cylinder which creates the hyperbolic shape.</p>
+<figure class="align-default" id="id3">
+<span id="cylinder-bscan-results"></span><a class="reference internal image-reference" href="_images/cylinder_Bscan_results.png"><img alt="_images/cylinder_Bscan_results.png" src="_images/cylinder_Bscan_results.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">図 35 </span><span class="caption-text">B-scan of model of a metal cylinder buried in a dielectric half-space.</span><a class="headerlink" href="#id3" title="この画像へのパーマリンク"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user_libs_opt_taguchi.html" class="btn btn-neutral float-left" title="Optimisation - Taguchi&#39;s method" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples_antennas.html" class="btn btn-neutral float-right" title="Antenna models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2015-2025, The University of Edinburgh, United Kingdom. Authors: Craig Warren and Antonis Giannopoulos.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

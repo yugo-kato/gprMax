@@ -1,0 +1,391 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Optimisation - Taguchi&#39;s method &mdash; gprMax  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2aa0fae8"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="_static/translations.js?v=4dbe4bdc"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="Introductory (2D) models" href="examples_simple_2D.html" />
+    <link rel="prev" title="Materials" href="user_libs_materials.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            gprMax
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">はじめに</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="include_readme.html">始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">ソフトウェアの機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gprmodelling.html">地中レーダモデリングのガイダンス</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">gprMaxの使用法</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="input.html">入力ファイルのコマンド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">出力データ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Pythonツール</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">プロット</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">File utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">高度な話題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_scripting.html">Scripting the input file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openmp_mpi.html">OpenMP, MPI, and HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPGPU</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ユーザライブラリ</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="user_libs_antennas.html">GPR antenna models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_antenna_patterns.html">Antenna patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_austinman.html">AustinMan/AustinWoman</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_materials.html">Materials</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Optimisation - Taguchi's method</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#information">Information</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#taguchi-s-method">Taguchi's method</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#package-overview">Package overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#implementation">Implementation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use-the-package">How to use the package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#results">Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">例</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples_simple_2D.html">Introductory (2D) models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_antennas.html">Antenna models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_advanced.html">高度な機能</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ヘルプとサポート</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faqs.html">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="screencasts.html">Screencasts &amp; videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding.html">コードの概要</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">精度と性能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comparisons_analytical.html">Analytical comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comparisons_numerical.html">Numerical comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">パフォーマンスベンチマーク</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">付録</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="references.html">参考文献</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gprMax</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Optimisation - Taguchi's method</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/user_libs_opt_taguchi.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>User libraries is a sub-package where useful Python modules contributed by users are stored.</p>
+<section id="optimisation-taguchi-s-method">
+<h1>Optimisation - Taguchi's method<a class="headerlink" href="#optimisation-taguchi-s-method" title="この見出しへのパーマリンク"></a></h1>
+<section id="information">
+<h2>Information<a class="headerlink" href="#information" title="この見出しへのパーマリンク"></a></h2>
+<p><strong>Author/Contact</strong>: Craig Warren (<a class="reference external" href="mailto:craig&#46;warren&#37;&#52;&#48;northumbria&#46;ac&#46;uk">craig<span>&#46;</span>warren<span>&#64;</span>northumbria<span>&#46;</span>ac<span>&#46;</span>uk</a>), Northumbria University, UK</p>
+<p><strong>License</strong>: <a class="reference external" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a></p>
+<p><strong>Attribution/cite</strong>: Warren, C., Giannopoulos, A. (2011). Creating finite-difference time-domain models of commercial ground-penetrating radar antennas using Taguchi's optimization method. <em>Geophysics</em>, 76(2), G37-G47. (<a class="reference external" href="http://dx.doi.org/10.1190/1.3548506">http://dx.doi.org/10.1190/1.3548506</a>)</p>
+<p>The package features an optimisation technique based on Taguchi's method. It allows users to define parameters in an input file and optimise their values based on a fitness function, for example it can be used to optimise material properties or geometry in a simulation.</p>
+<div class="admonition warning">
+<p class="admonition-title">警告</p>
+<p>This package combines a number of advanced features and should not be used without knowledge and familiarity of the underlying techniques. It requires:</p>
+<ul class="simple">
+<li><p>Knowledge of Python to contruct an input file to use with the optimisation</p></li>
+<li><p>Familiarity of optimisation techniques, and in particular Taguchi's method</p></li>
+<li><p>Careful sanity checks to be made throughout the process</p></li>
+</ul>
+</div>
+<section id="taguchi-s-method">
+<h3>Taguchi's method<a class="headerlink" href="#taguchi-s-method" title="この見出しへのパーマリンク"></a></h3>
+<p>Taguchi's method is based on the concept of the Orthogonal Array (OA) and has the following advantages:</p>
+<ul class="simple">
+<li><p>Simple to implement</p></li>
+<li><p>Effective in reduction of experiments</p></li>
+<li><p>Fast convergence speed</p></li>
+<li><p>Global optimum results</p></li>
+<li><p>Independence from initial values of optimisation parameters</p></li>
+</ul>
+<p>Details of Taguchi's method in the context of electromagnetics can be found in <a class="reference internal" href="references.html#wen2007a" id="id1"><span>[WEN2007a]</span></a> and <a class="reference internal" href="references.html#wen2007b" id="id2"><span>[WEN2007b]</span></a>.</p>
+</section>
+</section>
+<section id="package-overview">
+<h2>Package overview<a class="headerlink" href="#package-overview" title="この見出しへのパーマリンク"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>antenna_bowtie_opt.in
+fitness_functions.py
+OA_9_4_3_2.npy
+OA_18_7_3_2.npy
+plot_results.py
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">antenna_bowtie_opt.in</span></code> is a example model of a bowtie antenna where values of loading resistors are optimised.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fitness_functions.py</span></code> is a module containing fitness functions. There are some pre-built ones but users should add their own here.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OA_9_4_3_2.npy</span></code> and <code class="docutils literal notranslate"><span class="pre">OA_18_7_3_2.npy</span></code> are NumPy archives <a class="reference external" href="http://neilsloane.com/oadir/">containing pre-built OAs</a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_results.py</span></code> is a module for plotting the results, such as parameter values and convergence history, from an optimisation process when it has completed.</p></li>
+</ul>
+<section id="implementation">
+<h3>Implementation<a class="headerlink" href="#implementation" title="この見出しへのパーマリンク"></a></h3>
+<p>The process by which Taguchi's method optimises parameters is illustrated in the following figure:</p>
+<figure class="align-default" id="id3">
+<a class="reference internal image-reference" href="_images/taguchi_process.png"><img alt="_images/taguchi_process.png" src="_images/taguchi_process.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">図 29 </span><span class="caption-text">Process associated with Taguchi's method.</span><a class="headerlink" href="#id3" title="この画像へのパーマリンク"></a></p>
+</figcaption>
+</figure>
+<p>In stage 1a, one of the 2 pre-built OAs will automatically be chosen depending on the number of parameters to optimise. Currently, up to 7 independent parameters can be optimised, although a method to construct OAs of any size is under testing.</p>
+<p>In stage 1b, a fitness function is required to set a goal against which to compare results from the optimisation process. A number of pre-built fitness functions can be found in the <code class="docutils literal notranslate"><span class="pre">fitness_functions.py</span></code> module, e.g. <code class="docutils literal notranslate"><span class="pre">minvalue</span></code>, <code class="docutils literal notranslate"><span class="pre">maxvalue</span></code> and <code class="docutils literal notranslate"><span class="pre">xcorr</span></code>. Users can also easily add their own fitness functions to this module. All fitness functions must take two arguments:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">filename</span></code> a string containing the full path and filename of the output file</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">args</span></code> a dictionary which can contain any number of additional arguments for the function, e.g. names of outputs (rxs) in the model</p></li>
+</ul>
+<p>Additionally, all fitness functions must return a single fitness value which the optimsation process will aim to maximise.</p>
+<p>Stages 2-6 are iterated through by the optimisation process.</p>
+<p>Parameters and settings for the optimisation process are specified within a special Python block defined by <code class="docutils literal notranslate"><span class="pre">#taguchi</span></code> and <code class="docutils literal notranslate"><span class="pre">#end_taguchi</span></code> in the input file. The parameters to optimise must be defined in a dictionary named <code class="docutils literal notranslate"><span class="pre">optparams</span></code> and their initial ranges specified as lists with lower and upper values. The fitness function, it's parameters, and a stopping value are defined in dictionary named <code class="docutils literal notranslate"><span class="pre">fitness</span></code> which has keys for:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> a string that is the name of the fitness function to be used</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">args</span></code> a dictionary containing arguments to be passed to the fitness function. Within <code class="docutils literal notranslate"><span class="pre">args</span></code> there must be a key called <code class="docutils literal notranslate"><span class="pre">outputs</span></code> which contains a string or list of the names of one or more outputs (rxs) in the model</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stop</span></code> a value from the fitness function which when exceeded the optimisation should stop</p></li>
+</ul>
+<p>Optionally a variable called <code class="docutils literal notranslate"><span class="pre">maxiterations</span></code> maybe specified which will set a maximum number of iterations after which the optimisation process will terminate irrespective of any other criteria. If it is not specified it defaults to a maximum of 20 iterations.</p>
+<p>There is also a builtin criterion to terminate the optimisation process is successive fitness values are within 0.1% of one another.</p>
+</section>
+</section>
+<section id="how-to-use-the-package">
+<h2>How to use the package<a class="headerlink" href="#how-to-use-the-package" title="この見出しへのパーマリンク"></a></h2>
+<p>The package requires <code class="docutils literal notranslate"><span class="pre">#python</span></code> and <code class="docutils literal notranslate"><span class="pre">#end_python</span></code> to be used in the input file, as well as <code class="docutils literal notranslate"><span class="pre">#taguchi</span></code> and <code class="docutils literal notranslate"><span class="pre">#end_taguchi</span></code> for specifying parameters and setting for the optimisation process. A Taguchi optimisation is run using the command line option <code class="docutils literal notranslate"><span class="pre">--opt-taguchi</span></code>.</p>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="この見出しへのパーマリンク"></a></h3>
+<p>The following example demonstrates using the Taguchi optimisation process to optimise values of loading resistors used in a bowtie antenna. The example is slighty contrived as the goal is simply to find values for the resistors that produces a maximum absolute amplitude in the response from the antenna. We already know this should occur when the values of the resistors are at a minimum. Nevertheless, it is useful to illustrate the optimisation process and how to use it.</p>
+<figure class="align-default" id="id4">
+<a class="reference internal image-reference" href="_images/antenna_bowtie_opt.png"><img alt="_images/antenna_bowtie_opt.png" src="_images/antenna_bowtie_opt.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">図 30 </span><span class="caption-text">FDTD geometry mesh showing bowtie antenna with slots and loading resistors.</span><a class="headerlink" href="#id4" title="この画像へのパーマリンク"></a></p>
+</figcaption>
+</figure>
+<p>The bowtie design features three vertical slots (y-direction) in each arm of the bowtie. Each slot has different loading resistors, but within each slot there are four resistors of the same value. A resistor is modelled as two parallel edges of a cell. The bowtie is placed on a lossless substrate of relative permittivity 4.8. The antenna is modelled in free space, and an output point of the electric field (named <code class="docutils literal notranslate"><span class="pre">Ex60mm</span></code>) is specified at a distance of 60mm from the feed of the bowtie (red coloured cell).</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span>#taguchi:
+<span class="linenos"> 2</span>optparams[&#39;resinner&#39;] = [0.1, 1000]
+<span class="linenos"> 3</span>optparams[&#39;resmiddle&#39;] = [0.1, 1000]
+<span class="linenos"> 4</span>optparams[&#39;resouter&#39;] = [0.1, 1000]
+<span class="linenos"> 5</span>fitness = {&#39;name&#39;: &#39;min_max_value&#39;, &#39;stop&#39;: 10, &#39;args&#39;: {&#39;type&#39;: &#39;absmax&#39;, &#39;outputs&#39;: &#39;Ex60mm&#39;}}
+<span class="linenos"> 6</span>#end_taguchi:
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span>#python:
+<span class="linenos"> 9</span>
+<span class="linenos">10</span>import numpy as np
+<span class="linenos">11</span>from gprMax.input_cmd_funcs import *
+<span class="linenos">12</span>
+<span class="linenos">13</span>title = &#39;antenna_bowtie_opt&#39;
+<span class="linenos">14</span>print(&#39;#title: {}&#39;.format(title))
+<span class="linenos">15</span>
+<span class="linenos">16</span>domain = domain(0.180, 0.120, 0.160)
+<span class="linenos">17</span>dxdydz = dx_dy_dz(0.001, 0.001, 0.001)
+<span class="linenos">18</span>timewindow = time_window(5e-9)
+<span class="linenos">19</span>fr4_dims = (0.120, 0.060, 0.002)
+<span class="linenos">20</span>bowtie_dims = (0.050, 0.040) # Length, height
+<span class="linenos">21</span>flare_angle = np.arctan((bowtie_dims[1]/2) / bowtie_dims[0])
+<span class="linenos">22</span>tx_pos = (domain[0]/2, domain[1]/2, 0.050)
+<span class="linenos">23</span>
+<span class="linenos">24</span># Vertical slot positions, relative to feed position, i.e. txpos[0]
+<span class="linenos">25</span>vcut_pos = (0.014, 0.027, 0.038)
+<span class="linenos">26</span>
+<span class="linenos">27</span># Loading resistor values
+<span class="linenos">28</span>res = np.array([optparams[&#39;resinner&#39;], optparams[&#39;resmiddle&#39;], optparams[&#39;resouter&#39;]])
+<span class="linenos">29</span>rescond = ((1 / res) * (dxdydz[1] / (dxdydz[0] * dxdydz[2]))) / 2 # Divide by number of parallel edges per resistor
+<span class="linenos">30</span>
+<span class="linenos">31</span># Materials
+<span class="linenos">32</span>material(4.8, 0, 1, 0, &#39;fr4&#39;)
+<span class="linenos">33</span>for i in range(len(res)):
+<span class="linenos">34</span>    material(1, rescond[i], 1, 0, &#39;res&#39; + str(i + 1))
+<span class="linenos">35</span>
+<span class="linenos">36</span># Source excitation and type
+<span class="linenos">37</span>print(&#39;#waveform: gaussian 1 2e9 mypulse&#39;)
+<span class="linenos">38</span>print(&#39;#transmission_line: x {:g} {:g} {:g} 50 mypulse&#39;.format(tx_pos[0], tx_pos[1], tx_pos[2]))
+<span class="linenos">39</span>
+<span class="linenos">40</span># Output point - distance from tx_pos in z direction
+<span class="linenos">41</span>print(&#39;#rx: {:g} {:g} {:g} Ex60mm Ex&#39;.format(tx_pos[0], tx_pos[1], tx_pos[2] + 0.060))
+<span class="linenos">42</span>
+<span class="linenos">43</span># Bowtie - upper x half
+<span class="linenos">44</span>triangle(tx_pos[0], tx_pos[1], tx_pos[2], tx_pos[0] + bowtie_dims[0], tx_pos[1] - bowtie_dims[1]/2, tx_pos[2], tx_pos[0] + bowtie_dims[0], tx_pos[1] + bowtie_dims[1]/2, tx_pos[2], 0, &#39;pec&#39;)
+<span class="linenos">45</span>
+<span class="linenos">46</span># Bowtie - upper x half - vertical cuts
+<span class="linenos">47</span>for i in range(len(vcut_pos)):
+<span class="linenos">48</span>	for j in range(int(bowtie_dims[1] / dxdydz[2])):
+<span class="linenos">49</span>		edge(tx_pos[0] + vcut_pos[i], tx_pos[1] - bowtie_dims[1]/2 + j * dxdydz[1], tx_pos[2], tx_pos[0] + vcut_pos[i] + dxdydz[0], tx_pos[1] - bowtie_dims[1]/2 + j * dxdydz[1], tx_pos[2], &#39;free_space&#39;)
+<span class="linenos">50</span>
+<span class="linenos">51</span># Bowtie - upper x half - vertical cuts - loading
+<span class="linenos">52</span>for i in range(len(vcut_pos)):
+<span class="linenos">53</span>    gap = ((vcut_pos[i] * np.tan(flare_angle) * 2) - 4*dxdydz[1]) / 5
+<span class="linenos">54</span>    edge(tx_pos[0] + vcut_pos[i], tx_pos[1] - (1.5 * gap) - dxdydz[1], tx_pos[2], tx_pos[0] + vcut_pos[i] + dxdydz[0], tx_pos[1] - (1.5 * gap) - dxdydz[1], tx_pos[2], &#39;res&#39; + str(i + 1))
+<span class="linenos">55</span>    edge(tx_pos[0] + vcut_pos[i], tx_pos[1] - (1.5 * gap) - 2*dxdydz[1], tx_pos[2], tx_pos[0] + vcut_pos[i] + dxdydz[0], tx_pos[1] - (1.5 * gap) - 2*dxdydz[1], tx_pos[2], &#39;res&#39; + str(i + 1))
+<span class="linenos">56</span>    edge(tx_pos[0] + vcut_pos[i], tx_pos[1] - (0.5 * gap), tx_pos[2], tx_pos[0] + vcut_pos[i] + dxdydz[0], tx_pos[1] - (0.5 * gap), tx_pos[2], &#39;res&#39; + str(i + 1))
+<span class="linenos">57</span>    edge(tx_pos[0] + vcut_pos[i], tx_pos[1] - (0.5 * gap) - dxdydz[1], tx_pos[2], tx_pos[0] + vcut_pos[i] + dxdydz[0], tx_pos[1] - (0.5 * gap) - dxdydz[1], tx_pos[2], &#39;res&#39; + str(i + 1))
+<span class="linenos">58</span>    edge(tx_pos[0] + vcut_pos[i], tx_pos[1] + (0.5 * gap), tx_pos[2], tx_pos[0] + vcut_pos[i] + dxdydz[0], tx_pos[1] + (0.5 * gap), tx_pos[2], &#39;res&#39; + str(i + 1))
+<span class="linenos">59</span>    edge(tx_pos[0] + vcut_pos[i], tx_pos[1] + (0.5 * gap) + dxdydz[1], tx_pos[2], tx_pos[0] + vcut_pos[i] + dxdydz[0], tx_pos[1] + (0.5 * gap) + dxdydz[1], tx_pos[2], &#39;res&#39; + str(i + 1))
+<span class="linenos">60</span>    edge(tx_pos[0] + vcut_pos[i], tx_pos[1] + (1.5 * gap) + dxdydz[1], tx_pos[2], tx_pos[0] + vcut_pos[i] + dxdydz[0], tx_pos[1] + (1.5 * gap) + dxdydz[1], tx_pos[2], &#39;res&#39; + str(i + 1))
+<span class="linenos">61</span>    edge(tx_pos[0] + vcut_pos[i], tx_pos[1] + (1.5 * gap) + 2*dxdydz[1], tx_pos[2], tx_pos[0] + vcut_pos[i] + dxdydz[0], tx_pos[1] + (1.5 * gap) + 2*dxdydz[1], tx_pos[2], &#39;res&#39; + str(i + 1))
+<span class="linenos">62</span>
+<span class="linenos">63</span># Bowtie - lower x half
+<span class="linenos">64</span>triangle(tx_pos[0] + dxdydz[0], tx_pos[1], tx_pos[2], tx_pos[0] - bowtie_dims[0], tx_pos[1] - bowtie_dims[1]/2, tx_pos[2], tx_pos[0] - bowtie_dims[0], tx_pos[1] + bowtie_dims[1]/2, tx_pos[2], 0, &#39;pec&#39;)
+<span class="linenos">65</span>
+<span class="linenos">66</span># Bowtie - lower x half - cuts for loading
+<span class="linenos">67</span>for i in range(len(vcut_pos)):
+<span class="linenos">68</span>	for j in range(int(bowtie_dims[1] / dxdydz[2])):
+<span class="linenos">69</span>		edge(tx_pos[0] - vcut_pos[i] - dxdydz[0], tx_pos[1] - bowtie_dims[1]/2  + j * dxdydz[1], tx_pos[2], tx_pos[0] - vcut_pos[i], tx_pos[1] - bowtie_dims[1]/2  + j * dxdydz[1], tx_pos[2], &#39;free_space&#39;)
+<span class="linenos">70</span>
+<span class="linenos">71</span># Bowtie - lower x half - vertical cuts - loading
+<span class="linenos">72</span>for i in range(len(vcut_pos)):
+<span class="linenos">73</span>    gap = ((vcut_pos[i] * np.tan(flare_angle) * 2) - 4*dxdydz[1]) / 5
+<span class="linenos">74</span>    edge(tx_pos[0] - vcut_pos[i] - dxdydz[0], tx_pos[1] - (1.5 * gap) - dxdydz[1], tx_pos[2], tx_pos[0] - vcut_pos[i], tx_pos[1] - (1.5 * gap) - dxdydz[1], tx_pos[2], &#39;res&#39; + str(i + 1))
+<span class="linenos">75</span>    edge(tx_pos[0] - vcut_pos[i] - dxdydz[0], tx_pos[1] - (1.5 * gap) - 2*dxdydz[1], tx_pos[2], tx_pos[0] - vcut_pos[i], tx_pos[1] - (1.5 * gap) - 2*dxdydz[1], tx_pos[2], &#39;res&#39; + str(i + 1))
+<span class="linenos">76</span>    edge(tx_pos[0] - vcut_pos[i] - dxdydz[0], tx_pos[1] - (0.5 * gap), tx_pos[2], tx_pos[0] - vcut_pos[i], tx_pos[1] - (0.5 * gap), tx_pos[2], &#39;res&#39; + str(i + 1))
+<span class="linenos">77</span>    edge(tx_pos[0] - vcut_pos[i] - dxdydz[0], tx_pos[1] - (0.5 * gap) - dxdydz[1], tx_pos[2], tx_pos[0] - vcut_pos[i], tx_pos[1] - (0.5 * gap) - dxdydz[1], tx_pos[2], &#39;res&#39; + str(i + 1))
+<span class="linenos">78</span>    edge(tx_pos[0] - vcut_pos[i] - dxdydz[0], tx_pos[1] + (0.5 * gap), tx_pos[2], tx_pos[0] - vcut_pos[i], tx_pos[1] + (0.5 * gap), tx_pos[2], &#39;res&#39; + str(i + 1))
+<span class="linenos">79</span>    edge(tx_pos[0] - vcut_pos[i] - dxdydz[0], tx_pos[1] + (0.5 * gap) + dxdydz[1], tx_pos[2], tx_pos[0] - vcut_pos[i], tx_pos[1] + (0.5 * gap) + dxdydz[1], tx_pos[2], &#39;res&#39; + str(i + 1))
+<span class="linenos">80</span>    edge(tx_pos[0] - vcut_pos[i] - dxdydz[0], tx_pos[1] + (1.5 * gap) + dxdydz[1], tx_pos[2], tx_pos[0] - vcut_pos[i], tx_pos[1] + (1.5 * gap) + dxdydz[1], tx_pos[2], &#39;res&#39; + str(i + 1))
+<span class="linenos">81</span>    edge(tx_pos[0] - vcut_pos[i] - dxdydz[0], tx_pos[1] + (1.5 * gap) + 2*dxdydz[1], tx_pos[2], tx_pos[0] - vcut_pos[i], tx_pos[1] + (1.5 * gap) + 2*dxdydz[1], tx_pos[2], &#39;res&#39; + str(i + 1))
+<span class="linenos">82</span>
+<span class="linenos">83</span># PCB
+<span class="linenos">84</span>box(tx_pos[0] - fr4_dims[0]/2, tx_pos[1] - fr4_dims[1]/2, tx_pos[2] - fr4_dims[2], tx_pos[0] + fr4_dims[0]/2, tx_pos[1] + fr4_dims[1]/2, tx_pos[2], &#39;fr4&#39;)
+<span class="linenos">85</span>
+<span class="linenos">86</span># Detailed geometry view of PCB and bowtie
+<span class="linenos">87</span>#geometry_view(tx_pos[0] - fr4_dims[0]/2, tx_pos[1] - fr4_dims[1]/2, tx_pos[2] - fr4_dims[2], tx_pos[0] + fr4_dims[0]/2, tx_pos[1] + fr4_dims[1]/2, tx_pos[2] + dxdydz[2], dxdydz[0], dxdydz[1], dxdydz[2], title + &#39;_tx&#39;, type=&#39;f&#39;)
+<span class="linenos">88</span>
+<span class="linenos">89</span># Geometry view of entire domain
+<span class="linenos">90</span>#geometry_view(0, 0, 0, domain[0], domain[1], domain[2], dxdydz[0], dxdydz[1], dxdydz[2], title)
+<span class="linenos">91</span>
+<span class="linenos">92</span>#end_python:
+</pre></div>
+</div>
+<p>The first part of the input file (lines 1-6) contains the parameters to optimise, their initial ranges, and fitness function information for the optimisation process. Three parameters representing the resistor values are defined with ranges between 0.1 <span class="math notranslate nohighlight">\(\Omega\)</span> and 1 <span class="math notranslate nohighlight">\(k\Omega\)</span>. A pre-built fitness function called <code class="docutils literal notranslate"><span class="pre">min_max_value</span></code> is specified with a stopping criterion of 10V/m. Arguments for the <code class="docutils literal notranslate"><span class="pre">min_max_value</span></code> function are <code class="docutils literal notranslate"><span class="pre">type</span></code> given as <code class="docutils literal notranslate"><span class="pre">absmax</span></code>, i.e. the maximum absolute values, and the output point in the model that will be used in the optimisation is specified as having the name <code class="docutils literal notranslate"><span class="pre">Ex60mm</span></code>.</p>
+<p>The next part of the input file (lines 8-92) contains the model. For the most part there is nothing special about the way the model is defined - a mixture of Python, NumPy and functional forms of the input commands (available by importing the module <code class="docutils literal notranslate"><span class="pre">input_cmd_funcs</span></code>) are used. However, it is worth pointing out how the values of the parameters to optimise are accessed. On line 29 a NumPy array of the values of the resistors is created. The values are accessed using their names as keys to the <code class="docutils literal notranslate"><span class="pre">optparams</span></code> dictionary. On line 30 the values of the resistors are converted to conductivities, which are used to create new materials (line 34-35). The resistors are then built by applying the materials to cell edges (e.g. lines 55-62). The output point in the model in specifed with the name <code class="docutils literal notranslate"><span class="pre">Ex60mm</span></code> and as having only an <code class="docutils literal notranslate"><span class="pre">Ex</span></code> field output (line 42).</p>
+<p>The optimisation process is run on the model using the <code class="docutils literal notranslate"><span class="pre">--opt-taguchi</span></code> command line flag.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m gprMax user_libs/optimisation_taguchi/antenna_bowtie_opt.in --opt-taguchi
+</pre></div>
+</div>
+<section id="results">
+<h4>Results<a class="headerlink" href="#results" title="この見出しへのパーマリンク"></a></h4>
+<p>When the optimisation has completed a summary will be printed showing histories of the parameter values and the fitness metric. These values are also saved (pickled) to file and can be plotted using the <code class="docutils literal notranslate"><span class="pre">plot_results.py</span></code> module, for example:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m user_libs.optimisation_taguchi.plot_results user_libs/optimisation_taguchi/antenna_bowtie_opt_hist.pickle
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Optimisations summary for: antenna_bowtie_opt_hist.pickle
+Number of iterations: 4
+History of fitness values: [4.2720928, 5.68856, 5.7023263, 5.7023263]
+History of parameter values:
+resinner [250.07498, 0.87031555, 0.1, 0.1]
+resmiddle [250.07498, 0.87031555, 0.1, 0.1]
+resouter [250.07498, 0.87031555, 0.1, 0.1]
+</pre></div>
+</div>
+<figure class="align-default" id="id5">
+<a class="reference internal image-reference" href="_images/taguchi_fitness_hist.png"><img alt="_images/taguchi_fitness_hist.png" src="_images/taguchi_fitness_hist.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">図 31 </span><span class="caption-text">History of values of fitness metric (absolute maximum).</span><a class="headerlink" href="#id5" title="この画像へのパーマリンク"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id6">
+<a class="reference internal image-reference" href="_images/taguchi_parameter_hist.png"><img alt="_images/taguchi_parameter_hist.png" src="_images/taguchi_parameter_hist.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">図 32 </span><span class="caption-text">History of values of parameters - <code class="docutils literal notranslate"><span class="pre">resinner</span></code>, <code class="docutils literal notranslate"><span class="pre">resmiddle</span></code>, and <code class="docutils literal notranslate"><span class="pre">resouter</span></code> (in this case they are all identical).</span><a class="headerlink" href="#id6" title="この画像へのパーマリンク"></a></p>
+</figcaption>
+</figure>
+<p>The optimisation process terminated after 4 iterations because succcessive fitness values were within 0.1% of one another. A maximum absolute amplitude value of 5.7 V/m was achieved when the three resistors had values of 0.1 <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user_libs_materials.html" class="btn btn-neutral float-left" title="Materials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="examples_simple_2D.html" class="btn btn-neutral float-right" title="Introductory (2D) models" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2015-2025, The University of Edinburgh, United Kingdom. Authors: Craig Warren and Antonis Giannopoulos.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

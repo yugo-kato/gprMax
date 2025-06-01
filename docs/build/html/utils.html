@@ -1,0 +1,206 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File utilities &mdash; gprMax  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2aa0fae8"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="_static/translations.js?v=4dbe4bdc"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="Scripting the input file" href="python_scripting.html" />
+    <link rel="prev" title="プロット" href="plotting.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            gprMax
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">はじめに</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="include_readme.html">始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">ソフトウェアの機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gprmodelling.html">地中レーダモデリングのガイダンス</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">gprMaxの使用法</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="input.html">入力ファイルのコマンド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">出力データ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Pythonツール</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">プロット</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">File utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#inputfile-old2new-py">inputfile_old2new.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#outputfiles-merge-py">outputfiles_merge.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#convert-png2h5-py">convert_png2h5.py</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">高度な話題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_scripting.html">Scripting the input file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openmp_mpi.html">OpenMP, MPI, and HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPGPU</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ユーザライブラリ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_antennas.html">GPR antenna models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_antenna_patterns.html">Antenna patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_austinman.html">AustinMan/AustinWoman</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_materials.html">Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_opt_taguchi.html">Optimisation - Taguchi's method</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">例</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples_simple_2D.html">Introductory (2D) models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_antennas.html">Antenna models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_advanced.html">高度な機能</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ヘルプとサポート</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faqs.html">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="screencasts.html">Screencasts &amp; videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding.html">コードの概要</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">精度と性能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comparisons_analytical.html">Analytical comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comparisons_numerical.html">Numerical comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">パフォーマンスベンチマーク</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">付録</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="references.html">参考文献</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gprMax</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">File utilities</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-utilities">
+<span id="utils"></span><h1>File utilities<a class="headerlink" href="#file-utilities" title="この見出しへのパーマリンク"></a></h1>
+<p>This section provides information on how to use the other Python modules in the <code class="docutils literal notranslate"><span class="pre">tools</span></code> package to help manage gprMax files.</p>
+<section id="inputfile-old2new-py">
+<h2>inputfile_old2new.py<a class="headerlink" href="#inputfile-old2new-py" title="この見出しへのパーマリンク"></a></h2>
+<p>This modules assists with the process of migrating input files from the syntax of the old (pre v.3) version of gprMax to the new syntax. It will produce a new input file with the old syntax (attempted to be!) translated to the new syntax. Usage (from the top-level gprMax directory) is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m tools.inputfile_old2new inputfile
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">inputfile</span></code> is the name of input file including the path.</p>
+</section>
+<section id="outputfiles-merge-py">
+<h2>outputfiles_merge.py<a class="headerlink" href="#outputfiles-merge-py" title="この見出しへのパーマリンク"></a></h2>
+<p>gprMax produces a separate output file for each trace (A-scan) in a B-scan. This module combines the separate output files into a single file, and can remove the separate output files afterwards. Usage (from the top-level gprMax directory) is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m tools.outputfiles_merge basefilename --remove-files
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">basefilename</span></code> is the base name file of the output file series, e.g. for <code class="docutils literal notranslate"><span class="pre">myoutput1.out</span></code>, <code class="docutils literal notranslate"><span class="pre">myoutput2.out</span></code> the base file name would be <code class="docutils literal notranslate"><span class="pre">myoutput</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">remove-files</span></code> is an optional argument (flag) that when given will remove the separate output files after the merge.</p></li>
+</ul>
+</section>
+<section id="convert-png2h5-py">
+<h2>convert_png2h5.py<a class="headerlink" href="#convert-png2h5-py" title="この見出しへのパーマリンク"></a></h2>
+<p>This module enables a Portable Network Graphics (PNG) image file to be converted into a HDF5 file that can then be used to import geometry into gprMax (see the <code class="docutils literal notranslate"><span class="pre">#geometry_objects_read</span></code> command for information on how to use the HDF5 file with a materials file to import the geometry). The resulting geometry will be 2D but maybe extended in the z-(invariate) direction if a 3D model was desired. Usage (from the top-level gprMax directory) is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m tools.convert_png2h5 imagefile dxdydz
+</pre></div>
+</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">imagefile</span></code> is the name of the PNG image file including the path</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dxdydz</span></code> is the spatial discretisation to be used in the model</p></li>
+</ul>
+<p>There is an optional command line argument:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">-zcells</span></code> is the number of cells to extend the geometry in the z-(invariate) direction of the model</p></li>
+</ul>
+<p>For example create a HDF5 geometry objects file from the PNG image <code class="docutils literal notranslate"><span class="pre">my_layers.png</span></code> with a spatial discretisation of <span class="math notranslate nohighlight">\(\Delta x = \Delta y = \Delta z = 0.002\)</span> metres, and extending 150 cells in the z-(invariate) direction of the model:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m tools.convert_png2h5 my_layers.png 0.002 0.002 0.002 -zcells 150
+</pre></div>
+</div>
+<p>The module will display the PNG image and allow the user to select colours that will be used to define discrete materials in the model. When the user has finished selecting colours the window should be closed, whereupon the HDF5 file will be written.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="plotting.html" class="btn btn-neutral float-left" title="プロット" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="python_scripting.html" class="btn btn-neutral float-right" title="Scripting the input file" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2015-2025, The University of Edinburgh, United Kingdom. Authors: Craig Warren and Antonis Giannopoulos.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

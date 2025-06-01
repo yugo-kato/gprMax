@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>gprMaxユーザーガイド &mdash; gprMax  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2aa0fae8"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="_static/translations.js?v=4dbe4bdc"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="始める" href="include_readme.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            gprMax
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">はじめに</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="include_readme.html">始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">ソフトウェアの機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gprmodelling.html">地中レーダモデリングのガイダンス</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">gprMaxの使用法</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="input.html">入力ファイルのコマンド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">出力データ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Pythonツール</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">プロット</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">File utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">高度な話題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_scripting.html">Scripting the input file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openmp_mpi.html">OpenMP, MPI, and HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPGPU</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ユーザライブラリ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_antennas.html">GPR antenna models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_antenna_patterns.html">Antenna patterns</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_austinman.html">AustinMan/AustinWoman</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_materials.html">Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_opt_taguchi.html">Optimisation - Taguchi's method</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">例</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples_simple_2D.html">Introductory (2D) models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_antennas.html">Antenna models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_advanced.html">高度な機能</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ヘルプとサポート</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faqs.html">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="screencasts.html">Screencasts &amp; videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding.html">コードの概要</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">精度と性能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comparisons_analytical.html">Analytical comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comparisons_numerical.html">Numerical comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">パフォーマンスベンチマーク</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">付録</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="references.html">参考文献</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">gprMax</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">gprMaxユーザーガイド</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="gprmax-user-guide">
+<h1>gprMaxユーザーガイド<a class="headerlink" href="#gprmax-user-guide" title="この見出しへのパーマリンク"></a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">はじめに</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="include_readme.html">始める</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="include_readme.html#what-is-gprmax">gprMaxとは?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="include_readme.html#package-overview">パッケージの概要</a></li>
+<li class="toctree-l2"><a class="reference internal" href="include_readme.html#installation">インストール</a></li>
+<li class="toctree-l2"><a class="reference internal" href="include_readme.html#running-gprmax">gprMaxを実行する</a></li>
+<li class="toctree-l2"><a class="reference internal" href="include_readme.html#updating-gprmax">gprMaxの更新</a></li>
+<li class="toctree-l2"><a class="reference internal" href="include_readme.html#thanks-to-our-contributors">貢献者の皆様に感謝 ✨🔗</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">ソフトウェアの機能</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="features.html#what-s-new-changed">新機能/変更点は?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="features.html#key-features">主な機能</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gprmodelling.html">地中レーダモデリングのガイダンス</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gprmodelling.html#basic-concepts">基本概念</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gprmodelling.html#coordinate-system-and-conventions">Coordinate system and conventions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gprmodelling.html#spatial-discretization">Spatial discretization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gprmodelling.html#absorbing-boundary-conditions">Absorbing boundary conditions</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">gprMaxの使用法</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="input.html">入力ファイルのコマンド</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="input.html#essential-commands">必須のコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html#general-commands">一般的なコマンド</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html#material-commands">Material commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html#object-construction-commands">Object construction commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html#source-and-output-commands">Source and output commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="input.html#pml-commands">PML commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">出力データ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="output.html#field-s-output">フィールド出力</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output.html#geometry-output">Geometry output</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Pythonツール</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">プロット</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#a-scans">Aスキャン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#b-scans">Bスキャン</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#antenna-parameters">アンテナパラメータ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plotting.html#built-in-waveforms">組み込みの波形</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">File utilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#inputfile-old2new-py">inputfile_old2new.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#outputfiles-merge-py">outputfiles_merge.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#convert-png2h5-py">convert_png2h5.py</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">高度な話題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_scripting.html">Scripting the input file</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="python_scripting.html#constants-variables">Constants/variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_scripting.html#functions-for-input-commands">Functions for input commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="openmp_mpi.html">OpenMP, MPI, and HPC</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openmp_mpi.html#openmp">OpenMP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openmp_mpi.html#mpi">MPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openmp_mpi.html#hpc-job-script-examples">HPC job script examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPGPU</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html#extra-installation-steps-for-gpu-usage">Extra installation steps for GPU usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gpu.html#running-gprmax-using-gpu-s">Running gprMax using GPU(s)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">ユーザライブラリ</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_antennas.html">GPR antenna models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_libs_antennas.html#information">Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_libs_antennas.html#module-overview">Module overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_libs_antennas.html#how-to-use-the-module">How to use the module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_antenna_patterns.html">Antenna patterns</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_libs_antenna_patterns.html#information">Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_libs_antenna_patterns.html#module-overview">Module overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_libs_antenna_patterns.html#how-to-use-the-module">How to use the module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_austinman.html">AustinMan/AustinWoman</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_libs_austinman.html#information">Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_libs_austinman.html#package-overview">Package overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_libs_austinman.html#how-to-use-the-models">How to use the models</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_materials.html">Materials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_libs_materials.html#information">Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_libs_materials.html#how-to-use-the-module">How to use the module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_libs_materials.html#eccosorb">Eccosorb</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_opt_taguchi.html">Optimisation - Taguchi's method</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="user_libs_opt_taguchi.html#information">Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_libs_opt_taguchi.html#package-overview">Package overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_libs_opt_taguchi.html#how-to-use-the-package">How to use the package</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">例</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples_simple_2D.html">Introductory (2D) models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples_simple_2D.html#a-scan-from-a-metal-cylinder">A-scan from a metal cylinder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_simple_2D.html#b-scan-from-a-metal-cylinder">B-scan from a metal cylinder</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples_antennas.html">Antenna models</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples_antennas.html#wire-dipole-antenna-model">Wire dipole antenna model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_antennas.html#bowtie-antenna-model">Bowtie antenna model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples_antennas.html#b-scan-with-a-bowtie-antenna-model">B-scan with a bowtie antenna model</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples_advanced.html">高度な機能</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples_advanced.html#building-a-heterogeneous-soil">Building a heterogeneous soil</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">ヘルプとサポート</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faqs.html">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="screencasts.html">Screencasts &amp; videos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="screencasts.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="screencasts.html#plotting">Plotting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="screencasts.html#visualise-em-wave-propagation">Visualise EM wave propagation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="coding.html">コードの概要</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">精度と性能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comparisons_analytical.html">Analytical comparisons</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comparisons_analytical.html#hertzian-dipole-in-free-space">Hertzian dipole in free space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="comparisons_analytical.html#half-wave-dipole-in-free-space">Half-wave dipole in free space</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="comparisons_numerical.html">Numerical comparisons</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="comparisons_numerical.html#fdtd-mom">FDTD/MoM</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">パフォーマンスベンチマーク</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="benchmarking.html#how-to-benchmark">ベンチマークの方法は?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarking.html#results-cpu">結果: CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="benchmarking.html#results-gpu">結果: GPU</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">付録</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="references.html">参考文献</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="include_readme.html" class="btn btn-neutral float-right" title="始める" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2015-2025, The University of Edinburgh, United Kingdom. Authors: Craig Warren and Antonis Giannopoulos.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

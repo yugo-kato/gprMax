@@ -1,0 +1,112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2015-2025, The University of Edinburgh, United Kingdom.
+# Authors: Craig Warren and Antonis Giannopoulos
+# This file is distributed under the same license as the gprMax package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: gprMax 3.1.7\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-18 22:01+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja\n"
+"Language-Team: ja <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../source/comparisons_numerical.rst:3
+msgid "Numerical comparisons"
+msgstr ""
+
+#: ../source/comparisons_numerical.rst:5
+msgid ""
+"This section presents comparisons of models using different numerical "
+"modelling techniques."
+msgstr ""
+
+#: ../source/comparisons_numerical.rst:8
+msgid "FDTD/MoM"
+msgstr ""
+
+#: ../source/comparisons_numerical.rst:10
+msgid ""
+"The Finite-Difference Time-Domain (FDTD) method from gprMax is compared "
+"with the Method of Moments (MoM) from the `MATLAB antenna toolbox "
+"<http://uk.mathworks.com/products/antenna/>`_."
+msgstr ""
+
+#: ../source/comparisons_numerical.rst:13
+msgid "Bowtie antenna in free space"
+msgstr ""
+
+#: ../source/comparisons_numerical.rst:15
+msgid ""
+"This example considers the input impedance of a planar bowtie antenna in "
+"free space. The length and height of the bowtie are 100mm, giving a flare"
+" angle of :math:`90^\\circ`."
+msgstr ""
+
+#: ../source/comparisons_numerical.rst:18
+msgid "FDTD model"
+msgstr ""
+
+#: ../source/comparisons_numerical.rst:20
+msgid ""
+":download:`antenna_bowtie_fs.in "
+"<../../tests/other_codes/vs_MoM_MATLAB/antenna_bowtie_fs/antenna_bowtie_fs.in>`"
+msgstr ""
+
+#: ../source/comparisons_numerical.rst:26
+msgid ""
+"A Gaussian waveform with a centre frequency of 1.5GHz was used to excite "
+"the antenna, which was fed by a transmission line with a characteristic "
+"impedance of 50 Ohms."
+msgstr ""
+
+#: ../source/comparisons_numerical.rst:28
+msgid ""
+"The module ``plot_antenna_params`` from the ``tools`` subpackage was used"
+" to calculate and plot the input impedance from the FDTD model."
+msgstr ""
+
+#: ../source/comparisons_numerical.rst:31
+msgid "MoM model"
+msgstr ""
+
+#: ../source/comparisons_numerical.rst:33
+msgid ""
+"The bowtie antenna was created using the antenna toolbox in MATLAB, and "
+"the ``bowtieTriangular`` class."
+msgstr ""
+
+#: ../source/comparisons_numerical.rst:41
+msgid "Results"
+msgstr ""
+
+#: ../source/comparisons_numerical.rst:43
+msgid ""
+":numref:`antenna_bowtie_fs_ant_params` shows the input impedance "
+"(resistive and reactive) for the FDTD (gprMax) and MoM (MATLAB) models. "
+"The frequency resolution for the FFT used in both models was "
+":math:`\\Delta f = 33.33~MHz`."
+msgstr ""
+
+#: ../source/comparisons_numerical.rst:50
+msgid ""
+"Input impedance (resistive and reactive) of a bowtie antenna in free "
+"space using FDTD (gprMax) and MoM (MATLAB) models."
+msgstr ""
+
+#: ../source/comparisons_numerical.rst:52
+msgid ""
+"The results from the FDTD and MoM modelling techniques are in very good "
+"agreement. The biggest mismatch occurs in the resistive part of the input"
+" impedance at frequencies above 3GHz."
+msgstr ""
+

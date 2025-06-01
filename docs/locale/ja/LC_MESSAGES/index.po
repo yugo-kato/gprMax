@@ -1,0 +1,40 @@
+#: ../source/index.rst:5
+msgid "Introduction"
+msgstr "はじめに"
+
+#: ../source/index.rst:14
+msgid "Using gprMax"
+msgstr "gprMaxの使用法"
+
+#: ../source/index.rst:21
+msgid "Python tools"
+msgstr "Pythonツール"
+
+#: ../source/index.rst:28
+msgid "Advanced topics"
+msgstr "高度な話題"
+
+#: ../source/index.rst:36
+msgid "User libraries"
+msgstr "ユーザライブラリ"
+
+#: ../source/index.rst:46
+msgid "Examples"
+msgstr "例"
+
+#: ../source/index.rst:54
+msgid "Help and support"
+msgstr "ヘルプとサポート"
+
+#: ../source/index.rst:62
+msgid "Accuracy and performance"
+msgstr "精度と性能"
+
+#: ../source/index.rst:70
+msgid "Appendices"
+msgstr "付録"
+
+#: ../source/index.rst:3
+msgid "gprMax User Guide"
+msgstr "gprMaxユーザーガイド"
+

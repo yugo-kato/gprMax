@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ja">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AustinMan/AustinWoman &mdash; gprMax  ドキュメント</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=2aa0fae8"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+      <script src="_static/translations.js?v=4dbe4bdc"></script>
+      <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="検索" href="search.html" />
+    <link rel="next" title="Materials" href="user_libs_materials.html" />
+    <link rel="prev" title="Antenna patterns" href="user_libs_antenna_patterns.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            gprMax
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">はじめに</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="include_readme.html">始める</a></li>
+<li class="toctree-l1"><a class="reference internal" href="features.html">ソフトウェアの機能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gprmodelling.html">地中レーダモデリングのガイダンス</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">gprMaxの使用法</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="input.html">入力ファイルのコマンド</a></li>
+<li class="toctree-l1"><a class="reference internal" href="output.html">出力データ</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Pythonツール</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plotting.html">プロット</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">File utilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">高度な話題</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="python_scripting.html">Scripting the input file</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openmp_mpi.html">OpenMP, MPI, and HPC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gpu.html">GPGPU</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ユーザライブラリ</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="user_libs_antennas.html">GPR antenna models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_antenna_patterns.html">Antenna patterns</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AustinMan/AustinWoman</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#information">Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#package-overview">Package overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use-the-models">How to use the models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_materials.html">Materials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user_libs_opt_taguchi.html">Optimisation - Taguchi's method</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">例</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="examples_simple_2D.html">Introductory (2D) models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_antennas.html">Antenna models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples_advanced.html">高度な機能</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ヘルプとサポート</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="faqs.html">FAQs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="screencasts.html">Screencasts &amp; videos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="coding.html">コードの概要</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">精度と性能</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="comparisons_analytical.html">Analytical comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="comparisons_numerical.html">Numerical comparisons</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmarking.html">パフォーマンスベンチマーク</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">付録</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="references.html">参考文献</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gprMax</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">AustinMan/AustinWoman</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/user_libs_austinman.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <p>User libraries is a sub-package where useful Python modules contributed by users are stored.</p>
+<section id="austinman-austinwoman">
+<h1>AustinMan/AustinWoman<a class="headerlink" href="#austinman-austinwoman" title="この見出しへのパーマリンク"></a></h1>
+<section id="information">
+<h2>Information<a class="headerlink" href="#information" title="この見出しへのパーマリンク"></a></h2>
+<p><strong>Authors</strong>: Jackson W. Massey, Cemil S. Geyik, Jungwook Choi, Hyun-Jae Lee, Natcha Techachainiran, Che-Lun Hsu, Robin Q. Nguyen, Trevor Latson, Madison Ball, and Ali E. Yılmaz</p>
+<p><strong>Contact</strong>: Ali E. Yılmaz (<a class="reference external" href="mailto:ayilmaz&#37;&#52;&#48;mail&#46;utexas&#46;edu">ayilmaz<span>&#64;</span>mail<span>&#46;</span>utexas<span>&#46;</span>edu</a>), The University of Texas at Austin</p>
+<p><strong>License</strong>: <a class="reference external" href="http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License</a></p>
+<p><strong>Attribution/cite</strong>: Please follow the instructions at <a class="reference external" href="http://web.corral.tacc.utexas.edu/AustinManEMVoxels/AustinMan/citing_the_model/index.html">http://web.corral.tacc.utexas.edu/AustinManEMVoxels/AustinMan/citing_the_model/index.html</a></p>
+<p><a class="reference external" href="https://web.corral.tacc.utexas.edu/AustinManEMVoxels/AustinMan/index.html">AustinMan and AustinWoman</a> are open source electromagnetic voxel models of the human body, which are developed by the <a class="reference external" href="http://www.ece.utexas.edu/research/areas/electromagnetics-acoustics">Computational Electromagnetics Group</a> at <a class="reference external" href="http://www.utexas.edu">The University of Texas at Austin</a>. The models are based on data from the <a class="reference external" href="https://www.nlm.nih.gov/research/visible/visible_human.html">National Library of Medicine’s Visible Human Project</a>.</p>
+<figure class="align-default" id="id1">
+<a class="reference internal image-reference" href="_images/AustinMan_head.png"><img alt="_images/AustinMan_head.png" src="_images/AustinMan_head.png" style="width: 600px;" /></a>
+<figcaption>
+<p><span class="caption-number">図 19 </span><span class="caption-text">FDTD geometry mesh showing the head of the AustinMan model (2x2x2mm <span class="math notranslate nohighlight">\(^3\)</span>).</span><a class="headerlink" href="#id1" title="この画像へのパーマリンク"></a></p>
+</figcaption>
+</figure>
+<p>The following whole body models are available.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Model</p></th>
+<th class="head"><p>Resolution (mm <span class="math notranslate nohighlight">\(^3\)</span>)</p></th>
+<th class="head"><p>Dimensions (cells)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AustinMan</p></td>
+<td><p>8x8x8</p></td>
+<td><p>86 x 47 x 235</p></td>
+</tr>
+<tr class="row-odd"><td><p>AustinMan</p></td>
+<td><p>4x4x4</p></td>
+<td><p>171 x 94 x 470</p></td>
+</tr>
+<tr class="row-even"><td><p>AustinMan</p></td>
+<td><p>2x2x2</p></td>
+<td><p>342 x 187 x 939</p></td>
+</tr>
+<tr class="row-odd"><td><p>AustinMan</p></td>
+<td><p>1x1x1</p></td>
+<td><p>683 x 374 x 1877</p></td>
+</tr>
+<tr class="row-even"><td><p>AustinWoman</p></td>
+<td><p>8x8x8</p></td>
+<td><p>86 x 47 x 217</p></td>
+</tr>
+<tr class="row-odd"><td><p>AustinWoman</p></td>
+<td><p>4x4x4</p></td>
+<td><p>171 x 94 x 433</p></td>
+</tr>
+<tr class="row-even"><td><p>AustinWoman</p></td>
+<td><p>2x2x2</p></td>
+<td><p>342 x 187 x 865</p></td>
+</tr>
+<tr class="row-odd"><td><p>AustinWoman</p></td>
+<td><p>1x1x1</p></td>
+<td><p>683 x 374 x 1730</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="package-overview">
+<h2>Package overview<a class="headerlink" href="#package-overview" title="この見出しへのパーマリンク"></a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>AustinManWoman_materials.txt
+AustinManWoman_materials_dispersive.txt
+head_only_h5.py
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AustinManWoman_materials.txt</span></code> is a text file containing <a class="reference external" href="http://niremf.ifac.cnr.it/tissprop/">non-dispersive material properties at 900 MHz</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AustinManWoman_materials_dispersive.txt</span></code> is a text file containing <a class="reference external" href="http://dx.doi.org/10.1109/LMWC.2011.2180371">dispersive material properties using a 3-pole Debye model</a>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">注釈</p>
+<ul class="simple">
+<li><p>The main body tissues are described using a 3-pole Debye model, but not all materials have a dispersive description.</p></li>
+<li><p>The dispersive material properties can only be used with the 1x1x1mm or 2x2x2mm AustinMan/Woman models. This is because the time step of the model must always be less than any of the relaxation times of the poles of the Debye models used for the dispersive material properties.</p></li>
+</ul>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">head_only_h5.py</span></code> is a script to assist with creating a model of only the head from a full body AustinMan/Woman model.</p></li>
+</ul>
+</section>
+<section id="how-to-use-the-models">
+<h2>How to use the models<a class="headerlink" href="#how-to-use-the-models" title="この見出しへのパーマリンク"></a></h2>
+<p>The AustinMan and AustinWoman models themselves are not included in the user libraries sub-package.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://web.corral.tacc.utexas.edu/AustinManEMVoxels/AustinMan/download/index.html">Download a HDF5 file (.h5) of AustinMan or AustinWoman</a> at the resolution you wish to use</p></li>
+</ul>
+<p>To insert either AustinMan or AustinWoman models into a simulation use the <code class="docutils literal notranslate"><span class="pre">#geometry_objects_read</span></code>.</p>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="この見出しへのパーマリンク"></a></h3>
+<p>To insert a 2x2x2mm <span class="math notranslate nohighlight">\(^3\)</span> AustinMan with the lower left corner 40mm from the origin of the domain, using disperive material properties, and with no dielectric smoothing, use the command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#geometry_objects_read: 0.04 0.04 0.04 ../user_libs/AustinManWoman/AustinMan_v2.3_2x2x2.h5 ../user_libs/AustinManWoman/AustinManWoman_materials_dispersive.txt
+</pre></div>
+</div>
+<p>For further information on the <code class="docutils literal notranslate"><span class="pre">#geometry_objects_read</span></code> see the section on object contruction commands in the <a class="reference internal" href="input.html#commands"><span class="std std-ref">Input commands section</span></a>.</p>
+<figure class="align-default" id="id2">
+<a class="reference internal image-reference" href="_images/AustinMan.png"><img alt="_images/AustinMan.png" src="_images/AustinMan.png" style="width: 300px;" /></a>
+<figcaption>
+<p><span class="caption-number">図 20 </span><span class="caption-text">FDTD geometry mesh showing the AustinMan body model (2x2x2mm <span class="math notranslate nohighlight">\(^3\)</span>).</span><a class="headerlink" href="#id2" title="この画像へのパーマリンク"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="user_libs_antenna_patterns.html" class="btn btn-neutral float-left" title="Antenna patterns" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="user_libs_materials.html" class="btn btn-neutral float-right" title="Materials" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2015-2025, The University of Edinburgh, United Kingdom. Authors: Craig Warren and Antonis Giannopoulos.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
