@@ -22,8 +22,8 @@ dist/
 .ipynb_checkpoints/
 
 # Sphinx build products
-docs/build/
-docs/locale/**/LC_MESSAGES/*.mo
+/docs/build/
+/docs/locale/**/LC_MESSAGES/*.mo
 
 # html web page
 !/docs/build/html/
